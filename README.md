@@ -15,13 +15,21 @@ $ echo "deb https://repos.influxdata.com/debian jessie stable" | sudo tee /etc/a
 ```
 OR:
 ```
-echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+$ echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 ```
 
 next:
 ```
 $ sudo chmod 777 ./install.sh
 $ sudo ./install.sh
-
-
+$ influx
+	> CREATE USER admin WITH PASSWORD 'dbpassword' WITH ALL PRIVILEGES
+	> exit
+$ influx -username admin -password dbpassword
+	> CREATE DATABASE telegraf
+	> CREATE RETENTION POLICY "purge" ON "telegraf" DURATION 1w REPLICATION 1 DEFAULT
+	> exit
+$ sudo ./graphic.sh
+$ sudo ./fireup.sh
 ```
+
