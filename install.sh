@@ -37,5 +37,29 @@ sudo brctl addif br0 eth0
 sudo chmod 777 /etc/network/interfaces
 sudo rm -f /etc/network/interfaces
 sudo cp -f ./modules/interfaces /etc/network/
-
+sudo systemctl stop hostapd
+sudo systemctl stop dnsmasq
+sudo apt-get update
+sudo apt-get install mosquitto mosquitto-clients
+sudo apt install apt-transport-https curl
+curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+sudo apt-get update && sudo apt-get install telegraf
+sudo chmod 777 /etc/telegraf/
+sudo chmod 777 /etc/telegraf/telegraf.conf
+sudo rm -f /etc/telegraf/telegraf.conf
+sudo cp -f ./modules/telegraf.conf /etc/telegraf/
+sudo apt-get update && sudo apt-get install influxdb
+sudo chmod 777 /etc/influxdb/
+sudo chmod 777 /etc/influxdb/influxdb.conf
+sudo rm -f /etc/influxdb/influxdb.conf
+sudo cp -f ./modules/influxdb.conf /etc/influxdb/influxdb.conf
+sudo apt-get update && sudo wget https://github.com/fg2it/grafana-on-raspberry/releases/download/v4.2.0/grafana_4.2.0_armhf.deb
+sudo dpkg -i grafana_4.2.0_armhf.deb
+sudo systemctl enable influxdb
+sudo systemctl start influxdb
+sudo systemctl enable telegraf
+sudo systemctl start telegraf
+sudo systemctl enable grafana-server
+sudo systemctl start grafana-server
+sudo apt-get update
 
