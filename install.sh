@@ -9,6 +9,8 @@ sudo systemctl stop dnsmasq
 sudo mv /etc/dhcpcd.conf /etc/dhcpcd.conf.backup
 sudo chmod 777 /opt/IoTAccessPoint/modules/
 sudo chmod 777 /opt/IoTAccessPoint/html/
+sudo chmod 777 /opt/IoTAccessPoint/fireup.sh
+sudo chmod 777 /opt/IoTAccessPoint/graphic.sh                                                                                                                                                                                                                                     
 sudo chmod 777 /etc/
 sudo chmod 777 /etc/dhcpcd.conf
 sudo rm -f /etc/dhcpcd.conf
