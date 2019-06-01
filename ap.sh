@@ -37,4 +37,5 @@ sudo brctl addif br0 eth0
 sudo chmod 777 /etc/network/interfaces
 sudo rm -f /etc/network/interfaces
 sudo cp -f ./modules/interfaces /etc/network/
-
+sudo systemctl start hostapd
+sudo systemctl start dnsmasq
